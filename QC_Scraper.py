@@ -16,7 +16,7 @@ def QC_page_finder():
     if 'page_count' in QC_tracker:
 
         page_count = QC_tracker['page_count']
-        url = f'https://questionablecontent.net/view.php?comic={page_count}'
+        url = f'https://questionablecontent.net/view.php?comic={page_count - 1}'
         sys.stdout.write(f'Page count == {page_count}, URL == {url}.')
         sys.stdout.flush()
 
@@ -29,6 +29,10 @@ def QC_page_finder():
                 sys.stdout.write('No new comics since this was last run.')
                 sys.stdout.flush()
                 return 'DONE!'
+            else: 
+                sys.stdout.flush('Continuing from last comic.')
+                sys.stdout.flush()
+                url = f'{base_url}/{next_link}'
         except:
             sys.stdout.write('Not able to reach the QC server. Aborting operation!\n')
             sys.stdout.flush()
