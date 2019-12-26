@@ -17,8 +17,6 @@ def QC_page_finder():
 
         page_count = QC_tracker['page_count']
         url = f'https://questionablecontent.net/view.php?comic={page_count - 1}'
-        sys.stdout.write(f'Page count == {page_count}, URL == {url}.')
-        sys.stdout.flush()
 
         try:
             page = requests.get(url)
