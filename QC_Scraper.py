@@ -28,11 +28,11 @@ def QC_page_finder():
                 sys.stdout.flush()
                 return 'DONE!'
             else: 
-                sys.stdout.flush('Continuing from last comic.')
+                sys.stdout.write('Continuing from last comic.')
                 sys.stdout.flush()
                 url = f'{base_url}/{next_link}'
-        except:
-            sys.stdout.write('Not able to reach the QC server. Aborting operation!\n')
+        except Exception as err:
+            sys.stdout.write(f'Not able to reach the QC server. Error is {err}. Aborting operation!\n')
             sys.stdout.flush()
             return 'DONE!'
 
